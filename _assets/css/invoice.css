@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────── */
+*, *::before, *::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --ink:         #111827;
+   --ink-muted:   #6b7280;
+   --accent:      #1d4ed8;
+   --accent-light:#eff6ff;
+   --border:      #e5e7eb;
+   --surface:     #ffffff;
+   --bg:          #f3f4f6;
+   --radius:      12px;
+   --font-main:   'DM Sans', sans-serif;
+   --font-mono:   'DM Mono', monospace;
+}
+
+body {
+   font-family: var(--font-main);
+   background: var(--bg);
+   color: var(--ink);
+   min-height: 100vh;
+   padding: 40px 16px 80px;
+}
+
+/* ─────────────────────────────────────────────
+   INVOICE WRAPPER
+───────────────────────────────────────────── */
+.invoice {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   INVOICE CARD
+───────────────────────────────────────────── */
+.invoice-content {
+   width: 100%;
+   max-width: 480px;
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 12px 32px rgba(0,0,0,.06);
+   overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   HEADER
+───────────────────────────────────────────── */
+.invoice-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 14px 18px;
+   border-bottom: 1px solid var(--border);
+   background: var(--accent-light);
+}
+
+.invoice-header .logo img {
+   display: block;
+   height: 28px;
+   width: auto;
+}
+
+.invoice-no_order span {
+   font-family: var(--font-mono);
+   font-size: .7rem;
+   font-weight: 500;
+   color: var(--accent);
+   background: #dbeafe;
+   padding: 4px 10px;
+   border-radius: 999px;
+   letter-spacing: .02em;
+}
+
+/* ─────────────────────────────────────────────
+   TITLE
+───────────────────────────────────────────── */
+.invoice-title {
+   text-align: center;
+   padding: 12px 18px 0;
+   font-size: .65rem;
+   font-weight: 700;
+   letter-spacing: .12em;
+   text-transform: uppercase;
+   color: var(--ink-muted);
+}
+
+/* ─────────────────────────────────────────────
+   BODY
+───────────────────────────────────────────── */
+.invoice-body {
+   padding: 14px 18px 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+/* ─────────────────────────────────────────────
+   INFO TABLES (Pelanggan & Tanggal)
+───────────────────────────────────────────── */
+.table-invoice {
+   width: 100%;
+   border-collapse: collapse;
+   font-size: .78rem;
+}
+
+.table-invoice tr {
+   border-bottom: 1px solid var(--border);
+}
+
+.table-invoice tr:last-child {
+   border-bottom: none;
+}
+
+.table-invoice th {
+   width: 38%;
+   padding: 7px 10px;
+   font-weight: 600;
+   color: var(--ink-muted);
+   text-align: left;
+   background: #fafafa;
+   white-space: nowrap;
+}
+
+.table-invoice td {
+   padding: 7px 10px;
+   color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────
+   SECTION DIVIDER
+───────────────────────────────────────────── */
+.section-divider {
+   border: none;
+   border-top: 1px dashed var(--border);
+   margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   PAYMENT TABLE
+───────────────────────────────────────────── */
+.byr {
+   width: 100%;
+   border-collapse: collapse;
+   font-size: .78rem;
+   border: 1px solid var(--border);
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+.byr .heading {
+   padding: 7px 10px;
+   background: var(--ink);
+   color: #fff;
+   font-weight: 600;
+   font-size: .7rem;
+   letter-spacing: .04em;
+   text-transform: uppercase;
+   text-align: left;
+}
+
+.byr td {
+   padding: 7px 10px;
+   color: var(--ink);
+   border-bottom: 1px solid var(--border);
+}
+
+.byr tr:last-child td,
+.byr tr:last-child th {
+   border-bottom: none;
+}
+
+.byr .ub {
+   padding: 7px 10px;
+   font-weight: 600;
+   color: var(--ink-muted);
+   font-size: .75rem;
+   background: #fafafa;
+   border-bottom: 1px solid var(--border);
+   text-align: left;
+}
+
+.byr .ub-col {
+   padding: 7px 10px;
+   font-weight: 700;
+   color: var(--accent);
+   font-family: var(--font-mono);
+   font-size: .78rem;
+   border-bottom: 1px solid var(--border);
+}
+
+.byr tr:last-child th {
+   padding: 7px 10px;
+   font-weight: 600;
+   color: var(--ink-muted);
+   background: #fafafa;
+   font-size: .75rem;
+}
+
+.byr tr:last-child td {
+   padding: 7px 10px;
+   color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+.invoice-footer {
+   text-align: center;
+   padding-top: 6px;
+}
+
+.foot_logo {
+   font-size: .88rem;
+   font-weight: 700;
+   color: var(--ink);
+   letter-spacing: .01em;
+}
+
+/* Hanya kata "Shoes" yang berwarna biru */
+.foot_logo span {
+   color: var(--accent);
+}
+
+.invoice-footer p {
+   margin-top: 3px;
+   font-size: .72rem;
+   color: var(--ink-muted);
+}
+
+/* ─────────────────────────────────────────────
+   BACK BUTTON
+───────────────────────────────────────────── */
+.btn-back {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
+   padding: 9px 20px;
+   background: transparent;
+   border: 1px solid var(--border);
+   border-radius: 8px;
+   font-family: var(--font-main);
+   font-size: .85rem;
+   font-weight: 600;
+   color: var(--ink-muted);
+   text-decoration: none;
+   transition: background .18s, color .18s;
+}
+
+.btn-back:hover {
+   background: var(--surface);
+   color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────
+   PRINT BUTTON (floating)
+───────────────────────────────────────────── */
+.printbtn {
+   position: fixed;
+   bottom: 28px;
+   right: 28px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+   background: var(--accent);
+   color: #fff;
+   padding: 14px 18px;
+   border-radius: 14px;
+   cursor: pointer;
+   box-shadow: 0 4px 20px rgba(29,78,216,.35);
+   transition: transform .18s, box-shadow .18s;
+   user-select: none;
+}
+
+.printbtn:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 8px 28px rgba(29,78,216,.4);
+}
+
+.printbtn img {
+   filter: brightness(0) invert(1);
+   width: 28px;
+   height: 28px;
+}
+
+.printbtn span {
+   font-size: .75rem;
+   font-weight: 600;
+   letter-spacing: .02em;
+   white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────
+   PRINT MEDIA
+───────────────────────────────────────────── */
+@media print {
+   body {
+      background: #fff;
+      padding: 0;
+   }
+
+   .printbtn,
+   .btn-back {
+      display: none !important;
+   }
+
+   .invoice-content {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      max-width: 100%;
+   }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 520px) {
+   .invoice-header {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+   }
+
+   .invoice-body {
+      padding: 16px;
+   }
+
+   .table-invoice th {
+      width: 42%;
+   }
+}

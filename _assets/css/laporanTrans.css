@@ -1,0 +1,326 @@
+/* ============================================================
+   Laporan Transaksi — Treatment
+   ============================================================ */
+
+/* ── Reset & Base ──────────────────────────────────────────── */
+.lr-wrap * {
+    box-sizing: border-box;
+}
+
+.lr-wrap {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    color: #1a1a1a;
+    padding: 1.5rem 0;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.lr-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.lr-header h1 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.lr-header span {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* ── Stat Cards ─────────────────────────────────────────────── */
+.lr-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.lr-stat {
+    background: #f9f9f8;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+
+.lr-stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.lr-stat-value {
+    font-size: 18px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.lr-stat-value.blue  { color: #185fa5; }
+.lr-stat-value.green { color: #3b6d11; }
+.lr-stat-value.red   { color: #a32d2d; }
+
+/* ── Filter Card ────────────────────────────────────────────── */
+.lr-filter {
+    background: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.lr-filter-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.lr-filter-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.lr-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lr-filter-group label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.lr-filter-group select,
+.lr-filter-group input[type="date"] {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 13px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background: #fff;
+    color: #1a1a1a;
+    outline: none;
+}
+
+.lr-divider {
+    width: 0.5px;
+    background: rgba(0, 0, 0, 0.1);
+    height: 34px;
+    align-self: flex-end;
+}
+
+/* ── Tombol ─────────────────────────────────────────────────── */
+.lr-btn {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 13px;
+    border: 0.5px solid rgba(0, 0, 0, 0.18);
+    border-radius: 6px;
+    background: transparent;
+    color: #1a1a1a;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-end;
+}
+
+.lr-btn:hover {
+    background: #f3f3f1;
+}
+
+.lr-btn.primary {
+    background: #185fa5;
+    color: #fff;
+    border-color: #185fa5;
+}
+
+.lr-btn.primary:hover {
+    background: #0c447c;
+    border-color: #0c447c;
+}
+
+.lr-btn-sm {
+    height: 26px;
+    padding: 0 10px;
+    font-size: 11px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    background: transparent;
+    color: #1a1a1a;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lr-btn-sm:hover {
+    background: #f3f3f1;
+}
+
+/* ── Tabel — Wrapper ────────────────────────────────────────── */
+.lr-table-wrap {
+    overflow-x: auto;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* ── Tabel — Struktur ───────────────────────────────────────── */
+.lr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    table-layout: fixed;
+}
+
+/* Lebar tiap kolom */
+.lr-table col.col-no        { width: 44px; }
+.lr-table col.col-tgl       { width: 96px; }
+.lr-table col.col-order     { width: 104px; }
+.lr-table col.col-customer  { width: 160px; }
+.lr-table col.col-treatment { width: 140px; }
+.lr-table col.col-jml       { width: 52px; }
+.lr-table col.col-uang      { width: 116px; }
+.lr-table col.col-aksi      { width: 120px; }
+
+/* ── Tabel — Header ─────────────────────────────────────────── */
+.lr-table thead th {
+    background: #f4f4f2;
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Tabel — Body ───────────────────────────────────────────── */
+.lr-table tbody tr {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.1s;
+}
+
+.lr-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.lr-table tbody tr:hover {
+    background: #f9f9f8;
+}
+
+.lr-table tbody td {
+    padding: 11px 14px;
+    vertical-align: middle;
+    color: #1a1a1a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Tabel — Footer ─────────────────────────────────────────── */
+.lr-table tfoot tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.lr-table tfoot td {
+    padding: 12px 14px;
+    background: #f4f4f2;
+    font-weight: 500;
+}
+
+/* ── Alignment Kolom ────────────────────────────────────────── */
+.txt-center { text-align: center; }
+.txt-right  { text-align: right; }
+
+/* ── Helper Sel ─────────────────────────────────────────────── */
+.lr-no {
+    color: #c4c9d4;
+    font-size: 12px;
+    text-align: center;
+}
+
+.lr-order-id {
+    font-family: monospace;
+    font-size: 11.5px;
+    background: #f0f0ee;
+    padding: 3px 7px;
+    border-radius: 4px;
+    color: #6b7280;
+    display: inline-block;
+}
+
+.lr-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    background: #e6f1fb;
+    color: #185fa5;
+    white-space: nowrap;
+}
+
+.lr-money {
+    font-variant-numeric: tabular-nums;
+    color: #374151;
+}
+
+.lr-money-green {
+    font-variant-numeric: tabular-nums;
+    color: #3b6d11;
+    font-weight: 500;
+}
+
+.lr-kembali {
+    font-variant-numeric: tabular-nums;
+    color: #a32d2d;
+}
+
+.lr-actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* ── Footer Total ───────────────────────────────────────────── */
+.lr-total-label {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.lr-total {
+    color: #185fa5;
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── State Kosong ───────────────────────────────────────────── */
+.lr-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #9ca3af;
+}
+
+.lr-empty i {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 8px;
+}
